@@ -13,16 +13,21 @@
     <div class="logo">H&JPERFUMES</div>
 
     <ul class="nav-links">
-        <li><a href="index-ar.html">الرئيسية</a></li>
-        <li><a href="shop-ar.html">المتجر</a></li>
-        <li><a href="cart-ar.html" class="active">السلة</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html">Cart</a></li>
     </ul>
 
     <div class="nav-right">
-        <button class="lang-btn" onclick="switchToEnglish()">English</button>
-        <div class="icon cart">🛒<span id="cart-count">0</span></div>
+        <button class="lang-btn" onclick="switchToArabic()">عربي</button>
+
+        <!-- FIXED: Cart icon now opens the correct cart page -->
+        <div class="icon cart" onclick="goToCart()">
+            🛒<span id="cart-count">0</span>
+        </div>
     </div>
 </nav>
+
 
 <section class="cart-page">
     <h1 class="cart-title">سلة المشتريات</h1>
