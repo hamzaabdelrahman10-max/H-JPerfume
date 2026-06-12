@@ -14,16 +14,21 @@
     <div class="logo">H&JPERFUMES</div>
 
     <ul class="nav-links">
-        <li><a href="index-ar.html">الرئيسية</a></li>
-        <li><a href="shop-ar.html" class="active">المتجر</a></li>
-        <li><a href="cart-ar.html">السلة</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html">Cart</a></li>
     </ul>
 
     <div class="nav-right">
-        <button class="lang-btn" onclick="switchToEnglish()">EN</button>
-        <div class="icon cart">🛒<span id="cart-count">0</span></div>
+        <button class="lang-btn" onclick="switchToArabic()">عربي</button>
+
+        <!-- FIXED: Cart icon now opens the correct cart page -->
+        <div class="icon cart" onclick="goToCart()">
+            🛒<span id="cart-count">0</span>
+        </div>
     </div>
 </nav>
+
 
 <!-- WOMEN'S COLLECTION -->
 <section class="shop-section">
@@ -34,7 +39,7 @@
         <!-- DELINA -->
         <div class="product-card">
             <img src="delina.png" alt="Delina Exclusif">
-            <h3>ديلينا </h3>
+            <h3>ديلينا إكلازيف</h3>
 
             <p class="price">١٠٠ درهم</p>
 
@@ -111,7 +116,7 @@
         <!-- GISSA -->
         <div class="product-card">
             <img src="gisssa.png" alt="Gissa">
-            <h3>قصه</h3>
+            <h3>جيسّا</h3>
 
             <p class="price">١٠٠ درهم</p>
 
@@ -128,7 +133,7 @@
         <!-- MADAWI -->
         <div class="product-card">
             <img src="madawi.png" alt="Madawi">
-            <h3>مضاوي</h3>
+            <h3>مداوي</h3>
 
             <p class="price">١٠٠ درهم</p>
 
