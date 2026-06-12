@@ -13,16 +13,21 @@
     <div class="logo">H&JPERFUMES</div>
 
     <ul class="nav-links">
-        <li><a href="index-ar.html">الرئيسية</a></li>
-        <li><a href="shop-ar.html">المتجر</a></li>
-        <li><a href="cart-ar.html">السلة</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html">Cart</a></li>
     </ul>
 
     <div class="nav-right">
-        <button class="lang-btn" onclick="switchToEnglish()">English</button>
-        <div class="icon cart">🛒<span id="cart-count">0</span></div>
+        <button class="lang-btn" onclick="switchToArabic()">عربي</button>
+
+        <!-- FIXED: Cart icon now opens the correct cart page -->
+        <div class="icon cart" onclick="goToCart()">
+            🛒<span id="cart-count">0</span>
+        </div>
     </div>
 </nav>
+
 
 <section class="checkout-page">
     <h1>إتمام الطلب</h1>
@@ -34,6 +39,40 @@
 
             <div class="summary-total">
                 <span>الإجمالي</span>
+                <span id="checkout-total">0 درهم</span>
+            </div>
+        </div>
+
+        <div class="checkout-details">
+            <h2>بيانات التواصل</h2>
+            <label>الاسم</label>
+            <input type="text" id="customer-name" placeholder="اكتب اسمك">
+
+            <label>رقم الهاتف</label>
+            <input type="text" id="customer-phone" placeholder="اكتب رقم هاتفك">
+
+            <p class="note">سيتم تأكيد طلبك عبر الواتساب.</p>
+
+            <button class="btn-primary" onclick="sendOrderToWhatsApp()">تأكيد عبر الواتساب</button>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2026 إتش آند جي للعطور. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    initLanguage();
+    initSampleCount();
+    updateSampleDisplay();
+    updateSampleButtons();
+    updateCartCount();
+    displayCheckout();
+</script>
+</body>
+</html>
                 <span id="checkout-total">0 درهم</span>
             </div>
         </div>
