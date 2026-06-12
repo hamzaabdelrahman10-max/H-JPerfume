@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>السلة | إتش آند جي للعطور</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="rtl">
+
+<nav class="navbar">
+    <div class="logo">H&JPERFUMES</div>
+
+    <ul class="nav-links">
+        <li><a href="index-ar.html">الرئيسية</a></li>
+        <li><a href="shop-ar.html">المتجر</a></li>
+        <li><a href="cart-ar.html" class="active">السلة</a></li>
+    </ul>
+
+    <div class="nav-right">
+        <button class="lang-btn" onclick="switchToEnglish()">English</button>
+        <div class="icon cart">🛒<span id="cart-count">0</span></div>
+    </div>
+</nav>
+
+<section class="cart-page">
+    <h1 class="cart-title">سلة المشتريات</h1>
+
+    <div id="cart-items" class="cart-items"></div>
+
+    <div class="cart-summary">
+        <h2>ملخص الطلب</h2>
+
+        <div class="summary-row">
+            <span>الإجمالي الفرعي</span>
+            <span id="cart-subtotal">0 درهم</span>
+        </div>
+
+        <div class="summary-row">
+            <span>الشحن</span>
+            <span>مجاني</span>
+        </div>
+
+        <div class="summary-total">
+            <span>الإجمالي</span>
+            <span id="cart-total">0 درهم</span>
+        </div>
+
+        <button class="btn-primary" onclick="window.location='checkout-ar.html'">
+            إتمام الطلب
+        </button>
+
+        <button class="btn-ghost" onclick="window.location='shop-ar.html'">
+            متابعة التسوق
+        </button>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2026 إتش آند جي للعطور. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    initLanguage();
+    initSampleCount();
+    updateSampleDisplay();
+    updateSampleButtons();
+    updateCartCount();
+    displayCart();
+</script>
+</body>
+</html>

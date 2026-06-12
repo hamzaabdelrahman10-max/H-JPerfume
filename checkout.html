@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout | H&JPERFUMES</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">H&JPERFUMES</div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html">Cart</a></li>
+    </ul>
+
+    <div class="nav-right">
+        <button class="lang-btn" onclick="switchToArabic()">عربي</button>
+        <div class="icon cart">🛒<span id="cart-count">0</span></div>
+    </div>
+</nav>
+
+<section class="checkout-page">
+    <h1>Checkout</h1>
+
+    <div class="checkout-layout">
+        <div class="checkout-summary">
+            <h2>Your Order</h2>
+            <div id="checkout-items"></div>
+
+            <div class="summary-total">
+                <span>Total</span>
+                <span id="checkout-total">AED 0</span>
+            </div>
+        </div>
+
+        <div class="checkout-details">
+            <h2>Contact Details</h2>
+            <label>Your Name</label>
+            <input type="text" id="customer-name" placeholder="Enter your name">
+
+            <label>Your Phone</label>
+            <input type="text" id="customer-phone" placeholder="Enter your phone number">
+
+            <p class="note">We will confirm your order via WhatsApp.</p>
+
+            <button class="btn-primary" onclick="sendOrderToWhatsApp()">Confirm via WhatsApp</button>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2026 H&JPERFUMES. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    initLanguage();
+    initSampleCount();
+    updateSampleDisplay();
+    updateSampleButtons();
+    updateCartCount();
+    displayCheckout();
+</script>
+</body>
+</html>

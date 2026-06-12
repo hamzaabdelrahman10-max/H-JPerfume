@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart | H&JPERFUMES</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">H&JPERFUMES</div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html" class="active">Cart</a></li>
+    </ul>
+
+    <div class="nav-right">
+        <button class="lang-btn" onclick="switchToArabic()">عربي</button>
+        <div class="icon cart">🛒<span id="cart-count">0</span></div>
+    </div>
+</nav>
+
+<section class="cart-page">
+    <h1 class="cart-title">Your Cart</h1>
+
+    <div id="cart-items" class="cart-items"></div>
+
+    <div class="cart-summary">
+        <h2>Order Summary</h2>
+
+        <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="cart-subtotal">AED 0</span>
+        </div>
+
+        <div class="summary-row">
+            <span>Shipping</span>
+            <span>Free</span>
+        </div>
+
+        <div class="summary-total">
+            <span>Total</span>
+            <span id="cart-total">AED 0</span>
+        </div>
+
+        <button class="btn-primary" onclick="window.location='checkout.html'">
+            Proceed to Checkout
+        </button>
+
+        <button class="btn-ghost" onclick="window.location='shop.html'">
+            Continue Shopping
+        </button>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2026 H&JPERFUMES. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    initLanguage();
+    initSampleCount();
+    updateSampleDisplay();
+    updateSampleButtons();
+    updateCartCount();
+    displayCart();
+</script>
+</body>
+</html>
