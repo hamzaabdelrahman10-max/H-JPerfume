@@ -44,6 +44,19 @@ function switchToEnglish() {
 }
 
 /* ============================================================
+   NEW FEATURE — CART ICON CLICK
+============================================================ */
+function goToCart() {
+    let lang = localStorage.getItem(LANG_KEY) || "en";
+
+    if (lang === "ar") {
+        window.location.href = "cart-ar.html";
+    } else {
+        window.location.href = "cart.html";
+    }
+}
+
+/* ============================================================
    SAMPLE SYSTEM
 ============================================================ */
 function initSampleCount() {
