@@ -21,9 +21,14 @@
 
     <div class="nav-right">
         <button class="lang-btn" onclick="switchToArabic()">عربي</button>
-        <div class="icon cart">🛒<span id="cart-count">0</span></div>
+
+        <!-- FIXED: Cart icon now opens the correct cart page -->
+        <div class="icon cart" onclick="goToCart()">
+            🛒<span id="cart-count">0</span>
+        </div>
     </div>
 </nav>
+
 
 <!-- HERO SECTION -->
 <header class="hero hero-dark">
@@ -34,6 +39,63 @@
     </div>
 </header>
 
+<section class="samples-banner premium-samples">
+    <div class="samples-content">
+        <h2>Free Event Samples</h2>
+
+        <p class="samples-count">
+            We are giving away <span id="sample-count">20</span> free perfume samples.
+        </p>
+
+        <p class="samples-sub">Order your sample now before they run out.</p>
+
+        <button class="btn-primary sample-btn-main" onclick="orderSample('Free Sample')">
+            Order a Sample
+        </button>
+    </div>
+</section>
+
+
+<!-- FEATURED PERFUMES -->
+<section class="featured-showcase">
+    <h2>Featured Perfumes</h2>
+
+    <div class="featured-row">
+
+        <div class="featured-item">
+            <img src="gisssa.png" alt="Gissa">
+            <h3>Gissa</h3>
+        </div>
+
+        <div class="featured-item">
+            <img src="madawi.png" alt="Madawi">
+            <h3>Madawi</h3>
+        </div>
+
+        <div class="featured-item">
+            <img src="lahab.png" alt="Lahab">
+            <h3>Lahab</h3>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 H&JPERFUMES. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    initLanguage();
+    initSampleCount();
+    updateSampleDisplay();
+    updateSampleButtons();
+    updateCartCount();
+</script>
+
+</body>
+</html>
 <section class="samples-banner premium-samples">
     <div class="samples-content">
         <h2>Free Event Samples</h2>
