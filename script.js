@@ -7,29 +7,40 @@ const CART_KEY = "hj_cart";
 const LANG_KEY = "hj_lang";
 
 /* ============================================================
-   LANGUAGE SYSTEM
+   LANGUAGE SYSTEM (FIXED FOR GITHUB PAGES)
 ============================================================ */
 function initLanguage() {
     let lang = localStorage.getItem(LANG_KEY) || "en";
-    const isArabicPage = window.location.pathname.includes("-ar.html");
 
+    // Detect current file
+    let path = window.location.pathname;
+    let file = path.split("/").pop();
+
+    // GitHub Pages root (/) → treat as index.html
+    if (file === "") file = "index.html";
+
+    const isArabicPage = file.includes("-ar.html");
+
+    // Redirect only when needed
     if (lang === "ar" && !isArabicPage) {
-        window.location.href = window.location.pathname.replace(".html", "-ar.html");
+        window.location.href = "index-ar.html";
+        return;
     }
 
     if (lang === "en" && isArabicPage) {
-        window.location.href = window.location.pathname.replace("-ar.html", ".html");
+        window.location.href = "index.html";
+        return;
     }
 }
 
 function switchToArabic() {
     localStorage.setItem(LANG_KEY, "ar");
-    location.reload();
+    window.location.href = "index-ar.html";
 }
 
 function switchToEnglish() {
     localStorage.setItem(LANG_KEY, "en");
-    location.reload();
+    window.location.href = "index.html";
 }
 
 /* ============================================================
@@ -58,7 +69,7 @@ function updateSampleDisplay() {
 
 function updateSampleButtons() {
     const count = getSampleCount();
-    const buttons = document.querySelectorAll(".sample-btn");
+    const buttons = document.querySelectorAll(".sample-btn, .sample-btn-main");
 
     buttons.forEach(btn => {
         if (count <= 0) {
@@ -67,7 +78,10 @@ function updateSampleButtons() {
             btn.classList.add("disabled-btn");
         } else {
             btn.disabled = false;
-            btn.textContent = "Order Sample";
+            if (!btn.dataset.originalText) {
+                btn.dataset.originalText = btn.textContent;
+            }
+            btn.textContent = btn.dataset.originalText;
             btn.classList.remove("disabled-btn");
         }
     });
@@ -77,7 +91,7 @@ function orderSample(perfumeName) {
     let count = getSampleCount();
 
     if (count <= 0) {
-        alert("Samples are finished. Thank you for your interest.");
+        alert("Samples are finished.");
         updateSampleButtons();
         return;
     }
@@ -117,9 +131,8 @@ function addPerfumeToCart(name, sizeSelectId) {
     if (!sizeEl) return;
 
     const size = sizeEl.value;
-    let price = 100; // default 50ml
+    let price = 100;
 
-    if (size === "50") price = 100;
     if (size === "100") price = 150;
 
     const cart = getCart();
