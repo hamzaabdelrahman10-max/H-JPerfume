@@ -10,21 +10,25 @@
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
     <div class="logo">H&JPERFUMES</div>
 
     <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html" class="active">Shop</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
         <li><a href="cart.html">Cart</a></li>
     </ul>
 
     <div class="nav-right">
         <button class="lang-btn" onclick="switchToArabic()">عربي</button>
-        <div class="icon cart">🛒<span id="cart-count">0</span></div>
+
+        <!-- FIXED: Cart icon now opens the correct cart page -->
+        <div class="icon cart" onclick="goToCart()">
+            🛒<span id="cart-count">0</span>
+        </div>
     </div>
 </nav>
+
 
 <!-- WOMEN'S COLLECTION -->
 <section class="shop-section">
