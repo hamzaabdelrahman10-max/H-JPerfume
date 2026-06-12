@@ -10,20 +10,25 @@
 <body class="rtl">
 
 <!-- NAVBAR -->
-<nav class="navbar fade-in">
-    <div class="logo">عطور H&J</div>
+<nav class="navbar">
+    <div class="logo">H&JPERFUMES</div>
 
     <ul class="nav-links">
-        <li><a href="index-ar.html" class="active">الرئيسية</a></li>
-        <li><a href="shop-ar.html">المتجر</a></li>
-        <li><a href="cart-ar.html">السلة</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html">Cart</a></li>
     </ul>
 
     <div class="nav-right">
-        <button class="lang-btn" onclick="switchToEnglish()">EN</button>
-        <div class="icon cart">🛒<span id="cart-count">0</span></div>
+        <button class="lang-btn" onclick="switchToArabic()">عربي</button>
+
+        <!-- FIXED: Cart icon now opens the correct cart page -->
+        <div class="icon cart" onclick="goToCart()">
+            🛒<span id="cart-count">0</span>
+        </div>
     </div>
 </nav>
+
 
 <!-- HERO SECTION -->
 <header class="hero hero-dark fade-in">
@@ -58,7 +63,7 @@
     <div class="featured-row">
 
         <div class="featured-item fade-in">
-            <img src="gisssa.png" alt="Gissa">
+            <img src="gissa.png" alt="Gissa">
             <h3>قصه</h3>
         </div>
 
