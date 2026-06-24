@@ -2,11 +2,12 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>H&JPERFUMES | Home</title>
+    <title>H&JPERFUMES | Luxury Perfumes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <!-- NAVBAR -->
@@ -20,7 +21,7 @@
     </ul>
 
     <div class="nav-right">
-        <button class="lang-btn" onclick="switchToArabic()">عربي</button>
+        <button class="lang-btn" onclick="setLang('ar')">عربي</button>
 
         <div class="icon cart" onclick="goToCart()">
             🛒<span id="cart-count">0</span>
@@ -33,7 +34,71 @@
 <header class="hero hero-dark">
     <div class="hero-text">
         <h1>H&JPERFUMES</h1>
-        <p>Signature niche fragrances crafted for unforgettable moments.</p>
+        <p>Luxury niche perfumes crafted for unforgettable moments.</p>
+        <a href="shop.html" class="btn-primary">Explore Collection</a>
+    </div>
+</header>
+
+
+<!-- PREMIUM SAMPLES -->
+<section class="samples-banner premium-samples">
+    <div class="samples-content">
+        <h2>Free Samples</h2>
+
+        <p class="samples-count">
+            We are offering <span id="sample-count">20</span> free perfume samples.
+        </p>
+
+        <p class="samples-sub">Claim yours before they run out.</p>
+
+        <button class="btn-primary sample-btn-main" onclick="orderSample('Free Sample')">
+            Get Sample
+        </button>
+    </div>
+</section>
+
+
+<!-- FEATURED PERFUMES -->
+<section class="featured-showcase">
+    <h2>Featured Perfumes</h2>
+
+    <div class="featured-row">
+
+        <div class="featured-item">
+            <img src="gissa.png" alt="Gissa">
+            <h3>Gissa</h3>
+        </div>
+
+        <div class="featured-item">
+            <img src="madawi.png" alt="Madawi">
+            <h3>Madawi</h3>
+        </div>
+
+        <div class="featured-item">
+            <img src="lahab.png" alt="Lahab">
+            <h3>Lahab</h3>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 H&JPERFUMES. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    initLanguage();
+    initSampleCount();
+    updateSampleDisplay();
+    updateSampleButtons();
+    updateCartCount();
+</script>
+
+</body>
+</html>
         <a href="shop.html" class="btn-primary">Explore Collection</a>
     </div>
 </header>
