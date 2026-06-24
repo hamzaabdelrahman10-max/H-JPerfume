@@ -14,15 +14,16 @@
     <div class="logo">H&JPERFUMES</div>
 
     <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="cart.html">Cart</a></li>
+        <li><a href="index-ar.html" class="active">الرئيسية</a></li>
+        <li><a href="shop-ar.html">المتجر</a></li>
+        <li><a href="cart-ar.html">السلة</a></li>
     </ul>
 
     <div class="nav-right">
-        <button class="lang-btn" onclick="switchToArabic()">عربي</button>
+        <!-- FIXED LANGUAGE BUTTON -->
+        <button class="lang-btn" onclick="setLang('en')">English</button>
 
-        <!-- FIXED: Cart icon now opens the correct cart page -->
+        <!-- FIXED CART ICON -->
         <div class="icon cart" onclick="goToCart()">
             🛒<span id="cart-count">0</span>
         </div>
@@ -34,6 +35,68 @@
 <header class="hero hero-dark fade-in">
     <div class="hero-text">
         <h1>عطور H&J</h1>
+        <p>عطور نيش فاخرة صُممت للحظات لا تُنسى.</p>
+        <a href="shop-ar.html" class="btn-primary">استكشف المجموعة</a>
+    </div>
+</header>
+
+<!-- PREMIUM SAMPLES SECTION -->
+<section class="samples-banner premium-samples fade-in">
+    <div class="samples-content">
+        <h2>عينات مجانية للفعالية</h2>
+
+        <p class="samples-count">
+            نقدّم <span id="sample-count">20</span> عينة عطر مجانية.
+        </p>
+
+        <p class="samples-sub">اطلب عينتك الآن قبل نفاد الكمية.</p>
+
+        <button class="btn-primary sample-btn-main" onclick="orderSample('عينة مجانية')">
+            اطلب عينة
+        </button>
+    </div>
+</section>
+
+<!-- FEATURED PERFUMES -->
+<section class="featured-showcase fade-in">
+    <h2>عطور مميزة</h2>
+
+    <div class="featured-row">
+
+        <div class="featured-item fade-in">
+            <img src="gissa.png" alt="Gissa">
+            <h3>قصه</h3>
+        </div>
+
+        <div class="featured-item fade-in">
+            <img src="madawi.png" alt="Madawi">
+            <h3>مضاوي</h3>
+        </div>
+
+        <div class="featured-item fade-in">
+            <img src="lahab.png" alt="Lahab">
+            <h3>لهب</h3>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer fade-in">
+    <p>© 2026 عطور H&J. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    /* Arabic page does NOT call initLanguage() */
+    initSampleCount();
+    updateSampleDisplay();
+    updateSampleButtons();
+    updateCartCount();
+</script>
+
+</body>
+</html>
         <p>عطور نيش فاخرة صُممت للحظات لا تُنسى.</p>
         <a href="shop-ar.html" class="btn-primary">استكشف المجموعة</a>
     </div>
