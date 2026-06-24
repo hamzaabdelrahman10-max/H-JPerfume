@@ -10,19 +10,21 @@
 
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
     <div class="logo">H&JPERFUMES</div>
 
     <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html" class="active">Shop</a></li>
         <li><a href="cart.html">Cart</a></li>
     </ul>
 
     <div class="nav-right">
-        <button class="lang-btn" onclick="switchToArabic()">عربي</button>
+        <!-- FIXED LANGUAGE BUTTON -->
+        <button class="lang-btn" onclick="setLang('ar')">عربي</button>
 
-        <!-- FIXED: Cart icon now opens the correct cart page -->
+        <!-- FIXED CART ICON -->
         <div class="icon cart" onclick="goToCart()">
             🛒<span id="cart-count">0</span>
         </div>
@@ -34,6 +36,179 @@
 <section class="shop-section">
     <h2>Women's Collection</h2>
 
+    <div class="product-grid">
+
+        <!-- DELINA -->
+        <div class="product-card">
+            <img src="delina.png" alt="Delina Exclusif">
+            <h3>Delina Exclusif</h3>
+
+            <select id="size-delina">
+                <option value="50">50ml — AED 100</option>
+                <option value="100">100ml — AED 150</option>
+            </select>
+
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('Delina Exclusif', 'size-delina')">
+                Add to Cart
+            </button>
+        </div>
+
+        <!-- ONE & ONLY -->
+        <div class="product-card">
+            <img src="one.png" alt="One & Only">
+            <h3>One & Only</h3>
+
+            <select id="size-one">
+                <option value="50">50ml — AED 100</option>
+                <option value="100">100ml — AED 150</option>
+            </select>
+
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('One & Only', 'size-one')">
+                Add to Cart
+            </button>
+        </div>
+
+        <!-- CALABRIA -->
+        <div class="product-card">
+            <img src="calabria.png" alt="Calabria">
+            <h3>Calabria</h3>
+
+            <select id="size-calabria">
+                <option value="50">50ml — AED 100</option>
+                <option value="100">100ml — AED 150</option>
+            </select>
+
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('Calabria', 'size-calabria')">
+                Add to Cart
+            </button>
+        </div>
+
+        <!-- GEORGINA -->
+        <div class="product-card">
+            <img src="georgina.png" alt="Georgina">
+            <h3>Georgina</h3>
+
+            <select id="size-georgina">
+                <option value="50">50ml — AED 100</option>
+                <option value="100">100ml — AED 150</option>
+            </select>
+
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('Georgina', 'size-georgina')">
+                Add to Cart
+            </button>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- MEN'S COLLECTION -->
+<section class="shop-section">
+    <h2>Men's Collection</h2>
+
+    <div class="product-grid">
+
+        <!-- GISSA -->
+        <div class="product-card">
+            <img src="gissa.png" alt="Gissa">
+            <h3>Gissa</h3>
+
+            <select id="size-gissa">
+                <option value="50">50ml — AED 100</option>
+                <option value="100">100ml — AED 150</option>
+            </select>
+
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('Gissa', 'size-gissa')">
+                Add to Cart
+            </button>
+        </div>
+
+        <!-- MADAWI -->
+        <div class="product-card">
+            <img src="madawi.png" alt="Madawi">
+            <h3>Madawi</h3>
+
+            <select id="size-madawi">
+                <option value="50">50ml — AED 100</option>
+                <option value="100">100ml — AED 150</option>
+            </select>
+
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('Madawi', 'size-madawi')">
+                Add to Cart
+            </button>
+        </div>
+
+        <!-- MEYDAN -->
+        <div class="product-card">
+            <img src="meydan.png" alt="Meydan">
+            <h3>Meydan</h3>
+
+            <select id="size-meydan">
+                <option value="50">50ml — AED 100</option>
+                <option value="100">100ml — AED 150</option>
+            </select>
+
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('Meydan', 'size-meydan')">
+                Add to Cart
+            </button>
+        </div>
+
+        <!-- LAHAB -->
+        <div class="product-card">
+            <img src="lahab.png" alt="Lahab">
+            <h3>Lahab</h3>
+
+            <select id="size-lahab">
+                <option value="50">50ml — AED 100</option>
+                <option value="100">100ml — AED 150</option>
+            </select>
+
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('Lahab', 'size-lahab')">
+                Add to Cart
+            </button>
+        </div>
+
+        <!-- TAHNOON -->
+        <div class="product-card">
+            <img src="tahnoon.png" alt="Tahnoon">
+            <h3>Tahnoon</h3>
+
+            <select id="size-tahnoon">
+                <option value="50">50ml — AED 100</option>
+                <option value="100">100ml — AED 150</option>
+            </select>
+
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('Tahnoon', 'size-tahnoon')">
+                Add to Cart
+            </button>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 H&JPERFUMES. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    initLanguage();
+    updateCartCount();
+</script>
+
+</body>
+</html>
     <div class="product-grid">
 
         <!-- DELINA -->
