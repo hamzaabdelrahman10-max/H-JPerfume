@@ -9,19 +9,21 @@
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
     <div class="logo">H&JPERFUMES</div>
 
     <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="shop.html">Shop</a></li>
-        <li><a href="cart.html">Cart</a></li>
+        <li><a href="cart.html" class="active">Cart</a></li>
     </ul>
 
     <div class="nav-right">
-        <button class="lang-btn" onclick="switchToArabic()">عربي</button>
+        <!-- FIXED LANGUAGE BUTTON -->
+        <button class="lang-btn" onclick="setLang('ar')">عربي</button>
 
-        <!-- FIXED: Cart icon now opens the correct cart page -->
+        <!-- FIXED CART ICON -->
         <div class="icon cart" onclick="goToCart()">
             🛒<span id="cart-count">0</span>
         </div>
@@ -29,6 +31,7 @@
 </nav>
 
 
+<!-- CART PAGE -->
 <section class="cart-page">
     <h1 class="cart-title">Your Cart</h1>
 
@@ -62,6 +65,8 @@
     </div>
 </section>
 
+
+<!-- FOOTER -->
 <footer class="footer">
     <p>© 2026 H&JPERFUMES. All rights reserved.</p>
 </footer>
@@ -69,49 +74,9 @@
 <script src="script.js"></script>
 <script>
     initLanguage();
-    initSampleCount();
-    updateSampleDisplay();
-    updateSampleButtons();
     updateCartCount();
     displayCart();
 </script>
-</body>
-</html>
-            <span id="cart-subtotal">AED 0</span>
-        </div>
 
-        <div class="summary-row">
-            <span>Shipping</span>
-            <span>Free</span>
-        </div>
-
-        <div class="summary-total">
-            <span>Total</span>
-            <span id="cart-total">AED 0</span>
-        </div>
-
-        <button class="btn-primary" onclick="window.location='checkout.html'">
-            Proceed to Checkout
-        </button>
-
-        <button class="btn-ghost" onclick="window.location='shop.html'">
-            Continue Shopping
-        </button>
-    </div>
-</section>
-
-<footer class="footer">
-    <p>© 2026 H&JPERFUMES. All rights reserved.</p>
-</footer>
-
-<script src="script.js"></script>
-<script>
-    initLanguage();
-    initSampleCount();
-    updateSampleDisplay();
-    updateSampleButtons();
-    updateCartCount();
-    displayCart();
-</script>
 </body>
 </html>
