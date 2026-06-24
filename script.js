@@ -1,135 +1,136 @@
-/* ============================================================
-   CONFIG
-============================================================ */
-const WHATSAPP_NUMBER = "971502287387"; 
-const SAMPLE_KEY = "hj_samples";
-const CART_KEY = "hj_cart";
-const LANG_KEY = "hj_lang";
+/* =========================================
+   H&JPERFUMES – GLOBAL STATE HELPERS
+=========================================*/
 
-/* ============================================================
-   LANGUAGE SYSTEM (FIXED FOR GITHUB PAGES)
-============================================================ */
-function initLanguage() {
-    let lang = localStorage.getItem(LANG_KEY) || "en";
+function getCart() {
+    const cart = localStorage.getItem("hj_cart");
+    return cart ? JSON.parse(cart) : [];
+}
 
-    // Detect current file
-    let path = window.location.pathname;
-    let file = path.split("/").pop();
+function saveCart(cart) {
+    localStorage.setItem("hj_cart", JSON.stringify(cart));
+}
 
-    // GitHub Pages root (/) → treat as index.html
-    if (file === "") file = "index.html";
+function getSamplesLeft() {
+    const stored = localStorage.getItem("hj_samples_left");
+    if (stored === null) {
+        localStorage.setItem("hj_samples_left", "20");
+        return 20;
+    }
+    return parseInt(stored, 10);
+}
 
-    const isArabicPage = file.includes("-ar.html");
+function saveSamplesLeft(count) {
+    localStorage.setItem("hj_samples_left", String(count));
+}
 
-    // Redirect only when needed
-    if (lang === "ar" && !isArabicPage) {
-        window.location.href = "index-ar.html";
+
+/* =========================================
+   SMART LANGUAGE SYSTEM
+=========================================*/
+
+function setLang(lang) {
+    localStorage.setItem("hj_lang", lang);
+
+    const page = window.location.pathname.split("/").pop() || "index.html";
+
+    // SWITCH TO ENGLISH
+    if (lang === "en") {
+        if (page.includes("-ar")) {
+            window.location.href = page.replace("-ar", "");
+        } else {
+            window.location.href = "index.html";
+        }
         return;
     }
 
-    if (lang === "en" && isArabicPage) {
-        window.location.href = "index.html";
-        return;
-    }
-}
-
-function switchToArabic() {
-    localStorage.setItem(LANG_KEY, "ar");
-    window.location.href = "index-ar.html";
-}
-
-function switchToEnglish() {
-    localStorage.setItem(LANG_KEY, "en");
-    window.location.href = "index.html";
-}
-
-/* ============================================================
-   NEW FEATURE — CART ICON CLICK
-============================================================ */
-function goToCart() {
-    let lang = localStorage.getItem(LANG_KEY) || "en";
-
+    // SWITCH TO ARABIC
     if (lang === "ar") {
+        if (!page.includes("-ar")) {
+            const parts = page.split(".");
+            window.location.href = parts[0] + "-ar.html";
+        } else {
+            window.location.href = "index-ar.html";
+        }
+        return;
+    }
+}
+
+// Only call this on ENGLISH pages
+function initLanguage() {
+    const lang = localStorage.getItem("hj_lang") || "en";
+    const page = window.location.pathname.split("/").pop() || "index.html";
+
+    // User prefers Arabic but is on English page
+    if (lang === "ar" && !page.includes("-ar")) {
+        const parts = page.split(".");
+        window.location.href = parts[0] + "-ar.html";
+        return;
+    }
+
+    // User prefers English but is on Arabic page
+    if (lang === "en" && page.includes("-ar")) {
+        window.location.href = page.replace("-ar", "");
+        return;
+    }
+}
+
+
+/* =========================================
+   CART ICON NAVIGATION
+=========================================*/
+
+function goToCart() {
+    const page = window.location.pathname.split("/").pop() || "index.html";
+
+    if (page.includes("-ar")) {
         window.location.href = "cart-ar.html";
     } else {
         window.location.href = "cart.html";
     }
 }
 
-/* ============================================================
-   SAMPLE SYSTEM
-============================================================ */
-function initSampleCount() {
-    if (localStorage.getItem(SAMPLE_KEY) === null) {
-        localStorage.setItem(SAMPLE_KEY, "20");
-    }
-}
 
-function getSampleCount() {
-    return parseInt(localStorage.getItem(SAMPLE_KEY) || "0", 10);
-}
-
-function setSampleCount(count) {
-    localStorage.setItem(SAMPLE_KEY, String(count));
-    updateSampleDisplay();
-    updateSampleButtons();
-}
-
-function updateSampleDisplay() {
-    const el = document.getElementById("sample-count");
-    if (el) el.textContent = getSampleCount();
-}
-
-function updateSampleButtons() {
-    const count = getSampleCount();
-    const buttons = document.querySelectorAll(".sample-btn, .sample-btn-main");
-
-    buttons.forEach(btn => {
-        if (count <= 0) {
-            btn.disabled = true;
-            btn.textContent = "Samples Finished";
-            btn.classList.add("disabled-btn");
-        } else {
-            btn.disabled = false;
-            if (!btn.dataset.originalText) {
-                btn.dataset.originalText = btn.textContent;
-            }
-            btn.textContent = btn.dataset.originalText;
-            btn.classList.remove("disabled-btn");
-        }
-    });
-}
-
-function orderSample(perfumeName) {
-    let count = getSampleCount();
-
-    if (count <= 0) {
-        alert("Samples are finished.");
-        updateSampleButtons();
-        return;
-    }
-
-    count -= 1;
-    setSampleCount(count);
-
-    let message = 
-        `🧪 Sample Request%0A` +
-        `Fragrance: ${perfumeName}%0A` +
-        `Remaining Samples: ${count}`;
-
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
-}
-
-/* ============================================================
+/* =========================================
    CART SYSTEM
-============================================================ */
-function getCart() {
-    return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+=========================================*/
+
+function addPerfumeToCart(name, selectId) {
+    const select = document.getElementById(selectId);
+    if (!select) return;
+
+    const size = select.value; // "50" or "100"
+    const price = size === "100" ? 150 : 100;
+
+    const cart = getCart();
+
+    const existing = cart.find(
+        item => item.name === name && item.size === size
+    );
+
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push({
+            name,
+            size,
+            price,
+            quantity: 1
+        });
+    }
+
+    saveCart(cart);
+    updateCartCount();
+    alert("Added to cart");
 }
 
-function saveCart(cart) {
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+function removeFromCart(index) {
+    const cart = getCart();
+    if (index < 0 || index >= cart.length) return;
+    cart.splice(index, 1);
+    saveCart(cart);
     updateCartCount();
+    displayCart();
 }
 
 function updateCartCount() {
@@ -139,161 +140,189 @@ function updateCartCount() {
     if (el) el.textContent = count;
 }
 
-function addPerfumeToCart(name, sizeSelectId) {
-    const sizeEl = document.getElementById(sizeSelectId);
-    if (!sizeEl) return;
-
-    const size = sizeEl.value;
-    let price = 100;
-
-    if (size === "100") price = 150;
-
-    const cart = getCart();
-    cart.push({
-        id: Date.now(),
-        name,
-        size,
-        price,
-        quantity: 1
-    });
-
-    saveCart(cart);
-    alert(`${name} (${size} ml) added to cart.`);
-}
-
 function displayCart() {
-    const cart = getCart();
     const container = document.getElementById("cart-items");
+    const subtotalEl = document.getElementById("cart-subtotal");
+    const totalEl = document.getElementById("cart-total");
+
     if (!container) return;
 
+    const cart = getCart();
     container.innerHTML = "";
 
-    const sub = document.getElementById("cart-subtotal");
-    const tot = document.getElementById("cart-total");
-
     if (cart.length === 0) {
-        container.innerHTML = `<p class="empty-cart">Your cart is empty.</p>`;
-        if (sub) sub.textContent = "AED 0";
-        if (tot) tot.textContent = "AED 0";
+        container.innerHTML = "<p>Your cart is empty.</p>";
+        if (subtotalEl) subtotalEl.textContent = "AED 0";
+        if (totalEl) totalEl.textContent = "AED 0";
         return;
     }
 
     let subtotal = 0;
 
-    cart.forEach(item => {
-        subtotal += item.price * item.quantity;
+    cart.forEach((item, index) => {
+        const lineTotal = item.price * item.quantity;
+        subtotal += lineTotal;
 
-        container.innerHTML += `
-            <div class="cart-item">
-                <div class="cart-info">
-                    <h3>${item.name}</h3>
-                    <p class="price">AED ${item.price} (${item.size} ml)</p>
+        const div = document.createElement("div");
+        div.className = "cart-item";
 
-                    <div class="quantity-box">
-                        <button onclick="changeQty(${item.id}, -1)">−</button>
-                        <span>${item.quantity}</span>
-                        <button onclick="changeQty(${item.id}, 1)">+</button>
-                    </div>
-
-                    <button class="remove-btn" onclick="removeItem(${item.id})">Remove</button>
-                </div>
+        div.innerHTML = `
+            <div class="cart-item-info">
+                <h3>${item.name}</h3>
+                <p>Size: ${item.size}ml</p>
+                <p>Price: AED ${item.price}</p>
+                <p>Quantity: ${item.quantity}</p>
+            </div>
+            <div class="cart-item-actions">
+                <p class="cart-item-total">AED ${lineTotal}</p>
+                <button class="btn-ghost" data-index="${index}">Remove</button>
             </div>
         `;
+
+        container.appendChild(div);
     });
 
-    if (sub) sub.textContent = `AED ${subtotal}`;
-    if (tot) tot.textContent = `AED ${subtotal}`;
+    if (subtotalEl) subtotalEl.textContent = `AED ${subtotal}`;
+    if (totalEl) totalEl.textContent = `AED ${subtotal}`;
+
+    // Attach remove handlers
+    container.querySelectorAll("button[data-index]").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const i = parseInt(btn.getAttribute("data-index"), 10);
+            removeFromCart(i);
+        });
+    });
 }
 
-function changeQty(id, amount) {
-    const cart = getCart();
-    const item = cart.find(i => i.id === id);
-    if (!item) return;
 
-    item.quantity += amount;
+/* =========================================
+   CHECKOUT DISPLAY + WHATSAPP
+=========================================*/
 
-    if (item.quantity <= 0) {
-        removeItem(id);
-        return;
-    }
-
-    saveCart(cart);
-    displayCart();
-}
-
-function removeItem(id) {
-    let cart = getCart().filter(item => item.id !== id);
-    saveCart(cart);
-    displayCart();
-}
-
-/* ============================================================
-   CHECKOUT + WHATSAPP ORDER
-============================================================ */
 function displayCheckout() {
-    const cart = getCart();
     const container = document.getElementById("checkout-items");
     const totalEl = document.getElementById("checkout-total");
 
-    if (!container || !totalEl) return;
+    if (!container) return;
 
+    const cart = getCart();
     container.innerHTML = "";
 
     if (cart.length === 0) {
-        container.innerHTML = `<p class="empty-cart">Your cart is empty.</p>`;
-        totalEl.textContent = "AED 0";
+        container.innerHTML = "<p>Your cart is empty.</p>";
+        if (totalEl) totalEl.textContent = "AED 0";
         return;
     }
 
     let total = 0;
 
     cart.forEach(item => {
-        total += item.price * item.quantity;
+        const lineTotal = item.price * item.quantity;
+        total += lineTotal;
 
-        container.innerHTML += `
-            <div class="checkout-item">
-                <p>${item.name} (${item.size} ml) x ${item.quantity} — AED ${item.price * item.quantity}</p>
+        const div = document.createElement("div");
+        div.className = "checkout-item";
+
+        div.innerHTML = `
+            <div class="checkout-item-line">
+                <span>${item.name} (${item.size}ml)</span>
+                <span>AED ${lineTotal}</span>
             </div>
         `;
+
+        container.appendChild(div);
     });
 
-    totalEl.textContent = `AED ${total}`;
+    if (totalEl) totalEl.textContent = `AED ${total}`;
 }
 
 function sendOrderToWhatsApp() {
+    const nameInput = document.getElementById("customer-name");
+    const phoneInput = document.getElementById("customer-phone");
+
+    const customerName = nameInput ? nameInput.value.trim() : "";
+    const customerPhone = phoneInput ? phoneInput.value.trim() : "";
+
     const cart = getCart();
     if (cart.length === 0) {
         alert("Your cart is empty.");
         return;
     }
 
-    const name = document.getElementById("customer-name")?.value || "";
-    const phone = document.getElementById("customer-phone")?.value || "";
-
-    let message = `🛍️ New Order from H&JPERFUMES%0A%0A`;
-
-    if (name) message += `👤 Name: ${name}%0A`;
-    if (phone) message += `📞 Phone: ${phone}%0A`;
-
-    message += `%0A🧴 Items:%0A`;
+    let total = 0;
+    let itemsText = "";
 
     cart.forEach(item => {
-        message += `• ${item.name} (${item.size} ml) x${item.quantity} = AED ${item.price * item.quantity}%0A`;
+        const lineTotal = item.price * item.quantity;
+        total += lineTotal;
+        itemsText += `• ${item.name} (${item.size}ml) x${item.quantity} = AED ${lineTotal}\n`;
     });
 
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+    const message = 
+        `New Order from H&JPERFUMES%0A%0A` +
+        `Name: ${encodeURIComponent(customerName)}%0A` +
+        `Phone: ${encodeURIComponent(customerPhone)}%0A%0A` +
+        `Items:%0A${encodeURIComponent(itemsText)}%0A` +
+        `Total: AED ${total}`;
+
+    // Put your WhatsApp number here (with country code, no +)
+    const whatsappNumber = "971500000000";
+
+    const url = `https://wa.me/${whatsappNumber}?text=${message}`;
     window.open(url, "_blank");
 }
 
-/* ============================================================
-   INIT
-============================================================ */
-window.addEventListener("load", () => {
-    initLanguage();
-    initSampleCount();
+
+/* =========================================
+   SAMPLES SYSTEM
+=========================================*/
+
+function initSampleCount() {
+    const count = getSamplesLeft();
+    const el = document.getElementById("sample-count");
+    if (el) el.textContent = count;
+}
+
+function updateSampleDisplay() {
+    const count = getSamplesLeft();
+    const el = document.getElementById("sample-count");
+    if (el) el.textContent = count;
+}
+
+function updateSampleButtons() {
+    const count = getSamplesLeft();
+    const buttons = document.querySelectorAll(".sample-btn-main");
+    buttons.forEach(btn => {
+        if (count <= 0) {
+            btn.disabled = true;
+            btn.textContent = btn.textContent.includes("اطلب")
+                ? "انتهت العينات"
+                : "Samples Finished";
+        } else {
+            btn.disabled = false;
+        }
+    });
+}
+
+function orderSample(label) {
+    let count = getSamplesLeft();
+    if (count <= 0) {
+        alert("No samples left.");
+        return;
+    }
+
+    count -= 1;
+    saveSamplesLeft(count);
     updateSampleDisplay();
     updateSampleButtons();
-    updateCartCount();
-    displayCart();
-    displayCheckout();
-});
+
+    alert(label + " requested.");
+}
+
+
+/* =========================================
+   OPTIONAL: ON LOAD HELPERS
+   (You already call specific functions in each HTML)
+=========================================*/
+
+// Nothing here on purpose – each page calls what it needs in its own <script> tag.
