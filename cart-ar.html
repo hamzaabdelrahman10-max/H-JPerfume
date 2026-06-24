@@ -9,19 +9,21 @@
 </head>
 <body class="rtl">
 
+<!-- NAVBAR -->
 <nav class="navbar">
     <div class="logo">H&JPERFUMES</div>
 
     <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="cart.html">Cart</a></li>
+        <li><a href="index-ar.html">الرئيسية</a></li>
+        <li><a href="shop-ar.html">المتجر</a></li>
+        <li><a href="cart-ar.html" class="active">السلة</a></li>
     </ul>
 
     <div class="nav-right">
-        <button class="lang-btn" onclick="switchToArabic()">عربي</button>
+        <!-- FIXED LANGUAGE BUTTON -->
+        <button class="lang-btn" onclick="setLang('en')">English</button>
 
-        <!-- FIXED: Cart icon now opens the correct cart page -->
+        <!-- FIXED CART ICON -->
         <div class="icon cart" onclick="goToCart()">
             🛒<span id="cart-count">0</span>
         </div>
@@ -29,6 +31,7 @@
 </nav>
 
 
+<!-- CART PAGE -->
 <section class="cart-page">
     <h1 class="cart-title">سلة المشتريات</h1>
 
@@ -62,18 +65,21 @@
     </div>
 </section>
 
+
+<!-- FOOTER -->
 <footer class="footer">
     <p>© 2026 إتش آند جي للعطور. جميع الحقوق محفوظة.</p>
 </footer>
 
 <script src="script.js"></script>
 <script>
-    initLanguage();
+    /* Arabic page does NOT call initLanguage() */
     initSampleCount();
     updateSampleDisplay();
     updateSampleButtons();
     updateCartCount();
     displayCart();
 </script>
+
 </body>
 </html>
