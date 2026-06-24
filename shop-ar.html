@@ -4,25 +4,27 @@
     <meta charset="UTF-8">
     <title>H&JPERFUMES | المتجر</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+
+<body class="rtl">
 
 <!-- NAVBAR -->
 <nav class="navbar">
     <div class="logo">H&JPERFUMES</div>
 
     <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="cart.html">Cart</a></li>
+        <li><a href="index-ar.html">الرئيسية</a></li>
+        <li><a href="shop-ar.html" class="active">المتجر</a></li>
+        <li><a href="cart-ar.html">السلة</a></li>
     </ul>
 
     <div class="nav-right">
-        <button class="lang-btn" onclick="switchToArabic()">عربي</button>
+        <!-- FIXED LANGUAGE BUTTON -->
+        <button class="lang-btn" onclick="setLang('en')">English</button>
 
-        <!-- FIXED: Cart icon now opens the correct cart page -->
+        <!-- FIXED CART ICON -->
         <div class="icon cart" onclick="goToCart()">
             🛒<span id="cart-count">0</span>
         </div>
@@ -39,16 +41,15 @@
         <!-- DELINA -->
         <div class="product-card">
             <img src="delina.png" alt="Delina Exclusif">
-            <h3>ديلينا إكلازيف</h3>
+            <h3>ديلينا </h3>
 
-            <p class="price">١٠٠ درهم</p>
-
-            <select class="size-select" onchange="updatePriceAR(this, this.previousElementSibling)">
-                <option value="50ml">٥٠ مل</option>
-                <option value="100ml">١٠٠ مل</option>
+            <select id="size-delina-ar">
+                <option value="50">٥٠ مل — ١٠٠ درهم</option>
+                <option value="100">١٠٠ مل — ١٥٠ درهم</option>
             </select>
 
-            <button class="add-btn" onclick="addToCart({name:'ديلينا إكلازيف'})">
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('ديلينا إكلازيف', 'size-delina-ar')">
                 أضف إلى السلة
             </button>
         </div>
@@ -58,14 +59,13 @@
             <img src="one.png" alt="One & Only">
             <h3>ون آند أونلي</h3>
 
-            <p class="price">١٠٠ درهم</p>
-
-            <select class="size-select" onchange="updatePriceAR(this, this.previousElementSibling)">
-                <option value="50ml">٥٠ مل</option>
-                <option value="100ml">١٠٠ مل</option>
+            <select id="size-one-ar">
+                <option value="50">٥٠ مل — ١٠٠ درهم</option>
+                <option value="100">١٠٠ مل — ١٥٠ درهم</option>
             </select>
 
-            <button class="add-btn" onclick="addToCart({name:'ون آند أونلي'})">
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('ون آند أونلي', 'size-one-ar')">
                 أضف إلى السلة
             </button>
         </div>
@@ -75,14 +75,13 @@
             <img src="calabria.png" alt="Calabria">
             <h3>كالابريا</h3>
 
-            <p class="price">١٠٠ درهم</p>
-
-            <select class="size-select" onchange="updatePriceAR(this, this.previousElementSibling)">
-                <option value="50ml">٥٠ مل</option>
-                <option value="100ml">١٠٠ مل</option>
+            <select id="size-calabria-ar">
+                <option value="50">٥٠ مل — ١٠٠ درهم</option>
+                <option value="100">١٠٠ مل — ١٥٠ درهم</option>
             </select>
 
-            <button class="add-btn" onclick="addToCart({name:'كالابريا'})">
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('كالابريا', 'size-calabria-ar')">
                 أضف إلى السلة
             </button>
         </div>
@@ -92,20 +91,20 @@
             <img src="georgina.png" alt="Georgina">
             <h3>جورجينا</h3>
 
-            <p class="price">١٠٠ درهم</p>
-
-            <select class="size-select" onchange="updatePriceAR(this, this.previousElementSibling)">
-                <option value="50ml">٥٠ مل</option>
-                <option value="100ml">١٠٠ مل</option>
+            <select id="size-georgina-ar">
+                <option value="50">٥٠ مل — ١٠٠ درهم</option>
+                <option value="100">١٠٠ مل — ١٥٠ درهم</option>
             </select>
 
-            <button class="add-btn" onclick="addToCart({name:'جورجينا'})">
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('جورجينا', 'size-georgina-ar')">
                 أضف إلى السلة
             </button>
         </div>
 
     </div>
 </section>
+
 
 <!-- MEN'S COLLECTION -->
 <section class="shop-section">
@@ -115,17 +114,16 @@
 
         <!-- GISSA -->
         <div class="product-card">
-            <img src="gisssa.png" alt="Gissa">
-            <h3>جيسّا</h3>
+            <img src="gissa.png" alt="Gissa">
+            <h3>قصه</h3>
 
-            <p class="price">١٠٠ درهم</p>
-
-            <select class="size-select" onchange="updatePriceAR(this, this.previousElementSibling)">
-                <option value="50ml">٥٠ مل</option>
-                <option value="100ml">١٠٠ مل</option>
+            <select id="size-gissa-ar">
+                <option value="50">٥٠ مل — ١٠٠ درهم</option>
+                <option value="100">١٠٠ مل — ١٥٠ درهم</option>
             </select>
 
-            <button class="add-btn" onclick="addToCart({name:'جيسّا'})">
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('جيسّا', 'size-gissa-ar')">
                 أضف إلى السلة
             </button>
         </div>
@@ -133,16 +131,15 @@
         <!-- MADAWI -->
         <div class="product-card">
             <img src="madawi.png" alt="Madawi">
-            <h3>مداوي</h3>
+            <h3>مضاوي</h3>
 
-            <p class="price">١٠٠ درهم</p>
-
-            <select class="size-select" onchange="updatePriceAR(this, this.previousElementSibling)">
-                <option value="50ml">٥٠ مل</option>
-                <option value="100ml">١٠٠ مل</option>
+            <select id="size-madawi-ar">
+                <option value="50">٥٠ مل — ١٠٠ درهم</option>
+                <option value="100">١٠٠ مل — ١٥٠ درهم</option>
             </select>
 
-            <button class="add-btn" onclick="addToCart({name:'مداوي'})">
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('مداوي', 'size-madawi-ar')">
                 أضف إلى السلة
             </button>
         </div>
@@ -152,14 +149,13 @@
             <img src="meydan.png" alt="Meydan">
             <h3>ميدان</h3>
 
-            <p class="price">١٠٠ درهم</p>
-
-            <select class="size-select" onchange="updatePriceAR(this, this.previousElementSibling)">
-                <option value="50ml">٥٠ مل</option>
-                <option value="100ml">١٠٠ مل</option>
+            <select id="size-meydan-ar">
+                <option value="50">٥٠ مل — ١٠٠ درهم</option>
+                <option value="100">١٠٠ مل — ١٥٠ درهم</option>
             </select>
 
-            <button class="add-btn" onclick="addToCart({name:'ميدان'})">
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('ميدان', 'size-meydan-ar')">
                 أضف إلى السلة
             </button>
         </div>
@@ -169,14 +165,13 @@
             <img src="lahab.png" alt="Lahab">
             <h3>لهب</h3>
 
-            <p class="price">١٠٠ درهم</p>
-
-            <select class="size-select" onchange="updatePriceAR(this, this.previousElementSibling)">
-                <option value="50ml">٥٠ مل</option>
-                <option value="100ml">١٠٠ مل</option>
+            <select id="size-lahab-ar">
+                <option value="50">٥٠ مل — ١٠٠ درهم</option>
+                <option value="100">١٠٠ مل — ١٥٠ درهم</option>
             </select>
 
-            <button class="add-btn" onclick="addToCart({name:'لهب'})">
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('لهب', 'size-lahab-ar')">
                 أضف إلى السلة
             </button>
         </div>
@@ -186,14 +181,13 @@
             <img src="tahnoon.png" alt="Tahnoon">
             <h3>طحنون</h3>
 
-            <p class="price">١٠٠ درهم</p>
-
-            <select class="size-select" onchange="updatePriceAR(this, this.previousElementSibling)">
-                <option value="50ml">٥٠ مل</option>
-                <option value="100ml">١٠٠ مل</option>
+            <select id="size-tahnoon-ar">
+                <option value="50">٥٠ مل — ١٠٠ درهم</option>
+                <option value="100">١٠٠ مل — ١٥٠ درهم</option>
             </select>
 
-            <button class="add-btn" onclick="addToCart({name:'طحنون'})">
+            <button class="btn-primary"
+                onclick="addPerfumeToCart('طحنون', 'size-tahnoon-ar')">
                 أضف إلى السلة
             </button>
         </div>
@@ -201,26 +195,16 @@
     </div>
 </section>
 
+
 <!-- FOOTER -->
 <footer class="footer">
     <p>© 2026 H&JPERFUMES. جميع الحقوق محفوظة.</p>
 </footer>
 
+<script src="script.js"></script>
 <script>
-function updatePriceAR(selectElement, priceElement) {
-    const size = selectElement.value;
-    priceElement.textContent = size === "50ml" ? "١٠٠ درهم" : "١٥٠ درهم";
-}
-
-function addToCart(item) {
-    alert(item.name + " تمت إضافته إلى السلة");
-}
-
-function switchToEnglish() {
-    window.location.href = "shop.html";
-}
-
-document.getElementById("cart-count").textContent = 0;
+    /* Arabic page does NOT call initLanguage() */
+    updateCartCount();
 </script>
 
 </body>
