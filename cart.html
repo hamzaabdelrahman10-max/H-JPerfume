@@ -80,3 +80,49 @@
 
 </body>
 </html>
+
+    <div id="cart-items" class="cart-items"></div>
+
+    <div class="cart-summary">
+        <h2>Order Summary</h2>
+
+        <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="cart-subtotal">AED 0</span>
+        </div>
+
+        <div class="summary-row">
+            <span>Shipping</span>
+            <span>Free</span>
+        </div>
+
+        <div class="summary-total">
+            <span>Total</span>
+            <span id="cart-total">AED 0</span>
+        </div>
+
+        <button class="btn-primary" onclick="window.location='checkout.html'">
+            Proceed to Checkout
+        </button>
+
+        <button class="btn-ghost" onclick="window.location='shop.html'">
+            Continue Shopping
+        </button>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 H&JPERFUMES. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    initLanguage();
+    updateCartCount();
+    displayCart();
+</script>
+
+</body>
+</html>
