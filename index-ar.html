@@ -43,19 +43,32 @@
 <!-- PREMIUM SAMPLES SECTION -->
 <section class="samples-banner premium-samples fade-in">
     <div class="samples-content">
-        <h2>عينات مجانية للفعالية</h2>
+        <h2>عينات مسابقة الإنستغرام</h2>
 
         <p class="samples-count">
-            نقدّم <span id="sample-count">20</span> عينة عطر مجانية.
+            لديك فرصة للحصول على <span id="sample-count">20</span> عينة عطر حصرية.
         </p>
 
-        <p class="samples-sub">اطلب عينتك الآن قبل نفاد الكمية.</p>
+        <p class="samples-sub">
+            للمشاركة في المسابقة:  
+            • متابعة صفحة الإنستغرام  
+            • الإعجاب بالريلز  
+            • مشاركة الريلز 5 مرات  
+            • إرسال الإثبات عبر الواتساب قبل طلب العينة
+        </p>
 
-        <button class="btn-primary sample-btn-main" onclick="orderSample('عينة مجانية')">
-            اطلب عينة
+        <button class="btn-primary sample-btn-main" onclick="redirectToWhatsApp()">
+            إرسال الإثبات وطلب العينة
         </button>
     </div>
 </section>
+
+<script>
+function redirectToWhatsApp() {
+    window.location.href = "https://wa.me/0502287387?text=مرحباً%20لقد%20أكملت%20شروط%20مسابقة%20الإنستغرام%20وأرغب%20في%20الحصول%20على%20العينة.";
+}
+</script>
+
 
 <!-- FEATURED PERFUMES -->
 <section class="featured-showcase fade-in">
@@ -89,70 +102,6 @@
 <script src="script.js"></script>
 <script>
     /* Arabic page does NOT call initLanguage() */
-    initSampleCount();
-    updateSampleDisplay();
-    updateSampleButtons();
-    updateCartCount();
-</script>
-
-</body>
-</html>
-        <p>عطور نيش فاخرة صُممت للحظات لا تُنسى.</p>
-        <a href="shop-ar.html" class="btn-primary">استكشف المجموعة</a>
-    </div>
-</header>
-
-<!-- PREMIUM SAMPLES SECTION -->
-<section class="samples-banner premium-samples fade-in">
-    <div class="samples-content">
-        <h2>عينات مجانية للفعالية</h2>
-
-        <p class="samples-count">
-            نقدّم <span id="sample-count">20</span> عينة عطر مجانية.
-        </p>
-
-        <p class="samples-sub">اطلب عينتك الآن قبل نفاد الكمية.</p>
-
-        <button class="btn-primary sample-btn-main" onclick="orderSample('عينة مجانية')">
-            اطلب عينة
-        </button>
-    </div>
-</section>
-
-<!-- FEATURED PERFUMES -->
-<section class="featured-showcase fade-in">
-    <h2>عطور مميزة</h2>
-
-    <div class="featured-row">
-
-        <div class="featured-item fade-in">
-            <img src="gissa.png" alt="Gissa">
-            <h3>قصه</h3>
-        </div>
-
-        <div class="featured-item fade-in">
-            <img src="madawi.png" alt="Madawi">
-            <h3>مضاوي</h3>
-        </div>
-
-        <div class="featured-item fade-in">
-            <img src="lahab.png" alt="Lahab">
-            <h3>لهب</h3>
-        </div>
-
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer fade-in">
-    <p>© 2026 عطور H&J. جميع الحقوق محفوظة.</p>
-</footer>
-
-<script src="script.js"></script>
-<script>
-    // ⚠️ To avoid refresh loop, do NOT call initLanguage() here
-    // Arabic page is already ar, so we just init samples + cart
-
     initSampleCount();
     updateSampleDisplay();
     updateSampleButtons();
