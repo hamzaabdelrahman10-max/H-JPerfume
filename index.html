@@ -43,84 +43,41 @@
 <!-- PREMIUM SAMPLES -->
 <section class="samples-banner premium-samples">
     <div class="samples-content">
-        <h2>Free Samples</h2>
+        <h2>Instagram Competition Samples</h2>
 
         <p class="samples-count">
-            We are offering <span id="sample-count">20</span> free perfume samples.
+            You have a chance to claim <span id="sample-count">20</span> exclusive perfume samples.
         </p>
 
-        <p class="samples-sub">Claim yours before they run out.</p>
+        <p class="samples-sub">
+            To claim your sample, complete the Instagram competition:  
+            • Follow the page  
+            • Like the reels  
+            • Share 5 times  
+            • Send proof on WhatsApp before submitting your sample request
+        </p>
 
-        <button class="btn-primary sample-btn-main" onclick="orderSample('Free Sample')">
-            Get Sample
+        <button class="btn-primary sample-btn-main" onclick="redirectToWhatsApp()">
+            Send Proof & Claim Sample
         </button>
     </div>
 </section>
 
-
-<!-- FEATURED PERFUMES -->
-<section class="featured-showcase">
-    <h2>Featured Perfumes</h2>
-
-    <div class="featured-row">
-
-        <div class="featured-item">
-            <img src="gissa.png" alt="Gissa">
-            <h3>Gissa</h3>
-        </div>
-
-        <div class="featured-item">
-            <img src="madawi.png" alt="Madawi">
-            <h3>Madawi</h3>
-        </div>
-
-        <div class="featured-item">
-            <img src="lahab.png" alt="Lahab">
-            <h3>Lahab</h3>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- FOOTER -->
-<footer class="footer">
-    <p>© 2026 H&JPERFUMES. All rights reserved.</p>
-</footer>
-
-<script src="script.js"></script>
 <script>
-    initLanguage();
-    initSampleCount();
-    updateSampleDisplay();
-    updateSampleButtons();
-    updateCartCount();
+function redirectToWhatsApp() {
+    window.location.href = "https://web.whatsapp.com/send?phone=971502287387";
+}
 </script>
 
-</body>
-</html>
-        <a href="shop.html" class="btn-primary">Explore Collection</a>
-    </div>
-</header>
 
 
-<!-- SAMPLES SECTION -->
-<section class="samples-banner premium-samples">
-    <div class="samples-content">
-        <h2>Free Event Samples</h2>
 
-        <p class="samples-count">
-            We are giving away <span id="sample-count">20</span> free perfume samples.
-        </p>
-
-        <p class="samples-sub">Order your sample now before they run out.</p>
-
-        <button class="btn-primary sample-btn-main" onclick="orderSample('Free Sample')">
-            Order a Sample
-        </button>
-    </div>
-</section>
-
+<script>
+function redirectToWhatsApp() {
+    // Redirect user to WhatsApp to send proof
+    window.location.href = "https://wa.me/0502287387?text=Hello%20I%20completed%20the%20Instagram%20competition%20and%20want%20to%20claim%20my%20sample.";
+}
+</script>
 
 <!-- FEATURED PERFUMES -->
 <section class="featured-showcase">
