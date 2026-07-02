@@ -34,7 +34,6 @@ function setLang(lang) {
 
     const page = window.location.pathname.split("/").pop() || "index.html";
 
-    // SWITCH TO ENGLISH
     if (lang === "en") {
         if (page.includes("-ar")) {
             window.location.href = page.replace("-ar", "");
@@ -44,7 +43,6 @@ function setLang(lang) {
         return;
     }
 
-    // SWITCH TO ARABIC
     if (lang === "ar") {
         if (!page.includes("-ar")) {
             const parts = page.split(".");
@@ -56,19 +54,16 @@ function setLang(lang) {
     }
 }
 
-// Only call this on ENGLISH pages
 function initLanguage() {
     const lang = localStorage.getItem("hj_lang") || "en";
     const page = window.location.pathname.split("/").pop() || "index.html";
 
-    // User prefers Arabic but is on English page
     if (lang === "ar" && !page.includes("-ar")) {
         const parts = page.split(".");
         window.location.href = parts[0] + "-ar.html";
         return;
     }
 
-    // User prefers English but is on Arabic page
     if (lang === "en" && page.includes("-ar")) {
         window.location.href = page.replace("-ar", "");
         return;
@@ -99,7 +94,7 @@ function addPerfumeToCart(name, selectId) {
     const select = document.getElementById(selectId);
     if (!select) return;
 
-    const size = select.value; // "50" or "100"
+    const size = select.value;
     const price = size === "100" ? 150 : 100;
 
     const cart = getCart();
@@ -185,7 +180,6 @@ function displayCart() {
     if (subtotalEl) subtotalEl.textContent = `AED ${subtotal}`;
     if (totalEl) totalEl.textContent = `AED ${subtotal}`;
 
-    // Attach remove handlers
     container.querySelectorAll("button[data-index]").forEach(btn => {
         btn.addEventListener("click", () => {
             const i = parseInt(btn.getAttribute("data-index"), 10);
@@ -255,18 +249,17 @@ function sendOrderToWhatsApp() {
     cart.forEach(item => {
         const lineTotal = item.price * item.quantity;
         total += lineTotal;
-        itemsText += `• ${item.name} (${item.size}ml) x${item.quantity} = AED ${lineTotal}\n`;
+        itemsText += `• ${item.name} (${item.size}ml) x${item.quantity} = AED ${lineTotal}%0A`;
     });
 
-    const message = 
+    const message =
         `New Order from H&JPERFUMES%0A%0A` +
-        `Name: ${encodeURIComponent(customerName)}%0A` +
-        `Phone: ${encodeURIComponent(customerPhone)}%0A%0A` +
-        `Items:%0A${encodeURIComponent(itemsText)}%0A` +
+        `Name: ${customerName}%0A` +
+        `Phone: ${customerPhone}%0A%0A` +
+        `Items:%0A${itemsText}%0A` +
         `Total: AED ${total}`;
 
-    // Put your WhatsApp number here (with country code, no +)
-    const whatsappNumber = "971500000000";
+    const whatsappNumber = "971502287387";
 
     const url = `https://wa.me/${whatsappNumber}?text=${message}`;
     window.open(url, "_blank");
@@ -318,11 +311,3 @@ function orderSample(label) {
 
     alert(label + " requested.");
 }
-
-
-/* =========================================
-   OPTIONAL: ON LOAD HELPERS
-   (You already call specific functions in each HTML)
-=========================================*/
-
-// Nothing here on purpose – each page calls what it needs in its own <script> tag.
