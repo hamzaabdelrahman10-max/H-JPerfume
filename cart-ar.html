@@ -20,10 +20,8 @@
     </ul>
 
     <div class="nav-right">
-        <!-- FIXED LANGUAGE BUTTON -->
         <button class="lang-btn" onclick="setLang('en')">English</button>
 
-        <!-- FIXED CART ICON -->
         <div class="icon cart" onclick="goToCart()">
             🛒<span id="cart-count">0</span>
         </div>
@@ -69,14 +67,16 @@
 <!-- FOOTER -->
 <footer class="footer">
     <p>© 2026 إتش آند جي للعطور. جميع الحقوق محفوظة.</p>
+
+    <p>
+        <a href="https://wa.me/971502287387" target="_blank" class="whatsapp-link">
+            تواصل معنا عبر الواتساب: 0502287387
+        </a>
+    </p>
 </footer>
 
 <script src="script.js"></script>
 <script>
-    /* Arabic page does NOT call initLanguage() */
-    initSampleCount();
-    updateSampleDisplay();
-    updateSampleButtons();
     updateCartCount();
     displayCart();
 </script>
