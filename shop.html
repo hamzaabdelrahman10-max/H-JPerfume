@@ -21,10 +21,8 @@
     </ul>
 
     <div class="nav-right">
-        <!-- FIXED LANGUAGE BUTTON -->
         <button class="lang-btn" onclick="setLang('ar')">عربي</button>
 
-        <!-- FIXED CART ICON -->
         <div class="icon cart" onclick="goToCart()">
             🛒<span id="cart-count">0</span>
         </div>
@@ -38,18 +36,23 @@
 
     <div class="product-grid">
 
-        <!-- DELINA -->
+        <!-- DELINA EXCLUSIF -->
         <div class="product-card">
             <img src="delina.png" alt="Delina Exclusif">
             <h3>Delina Exclusif</h3>
+
+            <p class="notes">
+                <strong>Top:</strong> Pear, Lychee, Grapefruit<br>
+                <strong>Middle:</strong> Turkish Rose, Incense, Vetiver<br>
+                <strong>Base:</strong> Vanilla, Musk, Evernyl
+            </p>
 
             <select id="size-delina">
                 <option value="50">50ml — AED 100</option>
                 <option value="100">100ml — AED 150</option>
             </select>
 
-            <button class="btn-primary"
-                onclick="addPerfumeToCart('Delina Exclusif', 'size-delina')">
+            <button class="btn-primary" onclick="addPerfumeToCart('Delina Exclusif', 'size-delina')">
                 Add to Cart
             </button>
         </div>
@@ -59,13 +62,18 @@
             <img src="one.png" alt="One & Only">
             <h3>One & Only</h3>
 
+            <p class="notes">
+                <strong>Top:</strong> Bergamot, Passion Fruit, Peach<br>
+                <strong>Middle:</strong> Geranium, Caramel, Jasmine<br>
+                <strong>Base:</strong> Patchouli Madagascar, Ambergris, White Musk
+            </p>
+
             <select id="size-one">
                 <option value="50">50ml — AED 100</option>
                 <option value="100">100ml — AED 150</option>
             </select>
 
-            <button class="btn-primary"
-                onclick="addPerfumeToCart('One & Only', 'size-one')">
+            <button class="btn-primary" onclick="addPerfumeToCart('One & Only', 'size-one')">
                 Add to Cart
             </button>
         </div>
@@ -75,13 +83,18 @@
             <img src="calabria.png" alt="Calabria">
             <h3>Calabria</h3>
 
+            <p class="notes">
+                <strong>Top:</strong> Bergamot, Pink Pepper, Green Apple<br>
+                <strong>Middle:</strong> Cashmere Wood, Iris, Patchouli<br>
+                <strong>Base:</strong> Amberwood, Tonka Bean, Vetiver
+            </p>
+
             <select id="size-calabria">
                 <option value="50">50ml — AED 100</option>
                 <option value="100">100ml — AED 150</option>
             </select>
 
-            <button class="btn-primary"
-                onclick="addPerfumeToCart('Calabria', 'size-calabria')">
+            <button class="btn-primary" onclick="addPerfumeToCart('Calabria', 'size-calabria')">
                 Add to Cart
             </button>
         </div>
@@ -91,13 +104,18 @@
             <img src="georgina.png" alt="Georgina">
             <h3>Georgina</h3>
 
+            <p class="notes">
+                <strong>Top:</strong> Blackcurrant, Mandarin<br>
+                <strong>Middle:</strong> Jasmine, Iris, Orange Blossom, Cashmere Wood<br>
+                <strong>Base:</strong> Musk
+            </p>
+
             <select id="size-georgina">
                 <option value="50">50ml — AED 100</option>
                 <option value="100">100ml — AED 150</option>
             </select>
 
-            <button class="btn-primary"
-                onclick="addPerfumeToCart('Georgina', 'size-georgina')">
+            <button class="btn-primary" onclick="addPerfumeToCart('Georgina', 'size-georgina')">
                 Add to Cart
             </button>
         </div>
@@ -112,18 +130,23 @@
 
     <div class="product-grid">
 
-        <!-- GISSA -->
+        <!-- GISSAH IMPERIAL -->
         <div class="product-card">
-            <img src="gisssa.png" alt="Gissa">
-            <h3>Gissa</h3>
+            <img src="gissa.png" alt="Gissah Imperial">
+            <h3>Gissah Imperial</h3>
+
+            <p class="notes">
+                <strong>Top:</strong> Italian Bergamot, Pink Pepper<br>
+                <strong>Middle:</strong> Patchouli, Praline, White Amber<br>
+                <strong>Base:</strong> Oud, Leather, Dark Woods
+            </p>
 
             <select id="size-gissa">
                 <option value="50">50ml — AED 100</option>
                 <option value="100">100ml — AED 150</option>
             </select>
 
-            <button class="btn-primary"
-                onclick="addPerfumeToCart('Gissa', 'size-gissa')">
+            <button class="btn-primary" onclick="addPerfumeToCart('Gissah Imperial', 'size-gissa')">
                 Add to Cart
             </button>
         </div>
@@ -133,13 +156,18 @@
             <img src="madawi.png" alt="Madawi">
             <h3>Madawi</h3>
 
+            <p class="notes">
+                <strong>Top:</strong> Peach, Fruity Flowers, Pineapple<br>
+                <strong>Middle:</strong> Orange Blossom<br>
+                <strong>Base:</strong> Patchouli, Wild Rose, Musk
+            </p>
+
             <select id="size-madawi">
                 <option value="50">50ml — AED 100</option>
                 <option value="100">100ml — AED 150</option>
             </select>
 
-            <button class="btn-primary"
-                onclick="addPerfumeToCart('Madawi', 'size-madawi')">
+            <button class="btn-primary" onclick="addPerfumeToCart('Madawi', 'size-madawi')">
                 Add to Cart
             </button>
         </div>
@@ -149,13 +177,18 @@
             <img src="meydan.png" alt="Meydan">
             <h3>Meydan</h3>
 
+            <p class="notes">
+                <strong>Top:</strong> Saffron, Lavender, Nutmeg, Bergamot, Cypress, Cardamom, Grapefruit, Styrax, Cinnamon, Apple, Artemisia<br>
+                <strong>Middle:</strong> Tobacco, Oud, Geranium, Cedar, Cashmeran, Jasmine, Labdanum<br>
+                <strong>Base:</strong> Leather, Oud, Patchouli, Vetiver, Musk, Sandalwood, Tonka Bean, Vanilla, Amber
+            </p>
+
             <select id="size-meydan">
                 <option value="50">50ml — AED 100</option>
                 <option value="100">100ml — AED 150</option>
             </select>
 
-            <button class="btn-primary"
-                onclick="addPerfumeToCart('Meydan', 'size-meydan')">
+            <button class="btn-primary" onclick="addPerfumeToCart('Meydan', 'size-meydan')">
                 Add to Cart
             </button>
         </div>
@@ -165,13 +198,18 @@
             <img src="lahab.png" alt="Lahab">
             <h3>Lahab</h3>
 
+            <p class="notes">
+                <strong>Top:</strong> Oregano, Pimento Seeds, Bergamot<br>
+                <strong>Middle:</strong> Myrrh, Opoponax, Olibanum, Amber<br>
+                <strong>Base:</strong> Smoke, Oud, Leather, Sandalwood, Patchouli
+            </p>
+
             <select id="size-lahab">
                 <option value="50">50ml — AED 100</option>
                 <option value="100">100ml — AED 150</option>
             </select>
 
-            <button class="btn-primary"
-                onclick="addPerfumeToCart('Lahab', 'size-lahab')">
+            <button class="btn-primary" onclick="addPerfumeToCart('Lahab', 'size-lahab')">
                 Add to Cart
             </button>
         </div>
@@ -181,13 +219,18 @@
             <img src="tahnoon.png" alt="Tahnoon">
             <h3>Tahnoon</h3>
 
+            <p class="notes">
+                <strong>Top:</strong> Caraway, Lemon Verbena<br>
+                <strong>Middle:</strong> Mate (Yerba Mate)<br>
+                <strong>Base:</strong> Oakmoss, Ambroxan
+            </p>
+
             <select id="size-tahnoon">
                 <option value="50">50ml — AED 100</option>
                 <option value="100">100ml — AED 150</option>
             </select>
 
-            <button class="btn-primary"
-                onclick="addPerfumeToCart('Tahnoon', 'size-tahnoon')">
+            <button class="btn-primary" onclick="addPerfumeToCart('Tahnoon', 'size-tahnoon')">
                 Add to Cart
             </button>
         </div>
