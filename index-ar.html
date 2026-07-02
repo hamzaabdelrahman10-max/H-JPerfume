@@ -20,10 +20,8 @@
     </ul>
 
     <div class="nav-right">
-        <!-- FIXED LANGUAGE BUTTON -->
         <button class="lang-btn" onclick="setLang('en')">English</button>
 
-        <!-- FIXED CART ICON -->
         <div class="icon cart" onclick="goToCart()">
             🛒<span id="cart-count">0</span>
         </div>
@@ -39,35 +37,6 @@
         <a href="shop-ar.html" class="btn-primary">استكشف المجموعة</a>
     </div>
 </header>
-
-<!-- PREMIUM SAMPLES SECTION -->
-<section class="samples-banner premium-samples fade-in">
-    <div class="samples-content">
-        <h2>عينات مسابقة الإنستغرام</h2>
-
-        <p class="samples-count">
-            لديك فرصة للحصول على <span id="sample-count">20</span> عينة عطر حصرية.
-        </p>
-
-        <p class="samples-sub">
-            للمشاركة في المسابقة:  
-            • متابعة صفحة الإنستغرام  
-            • الإعجاب بالريلز  
-            • مشاركة الريلز 5 مرات  
-            • إرسال الإثبات عبر الواتساب قبل طلب العينة
-        </p>
-
-        <button class="btn-primary sample-btn-main" onclick="redirectToWhatsApp()">
-            إرسال الإثبات وطلب العينة
-        </button>
-    </div>
-</section>
-
-<script>
-function redirectToWhatsApp() {
-    window.location.href = "https://wa.me/0502287387?text=مرحباً%20لقد%20أكملت%20شروط%20مسابقة%20الإنستغرام%20وأرغب%20في%20الحصول%20على%20العينة.";
-}
-</script>
 
 
 <!-- FEATURED PERFUMES -->
@@ -94,17 +63,20 @@ function redirectToWhatsApp() {
     </div>
 </section>
 
+
 <!-- FOOTER -->
 <footer class="footer fade-in">
     <p>© 2026 عطور H&J. جميع الحقوق محفوظة.</p>
+
+    <p>
+        <a href="https://wa.me/971502287387" target="_blank" class="whatsapp-link">
+            تواصل معنا عبر الواتساب: 0502287387
+        </a>
+    </p>
 </footer>
 
 <script src="script.js"></script>
 <script>
-    /* Arabic page does NOT call initLanguage() */
-    initSampleCount();
-    updateSampleDisplay();
-    updateSampleButtons();
     updateCartCount();
 </script>
 
