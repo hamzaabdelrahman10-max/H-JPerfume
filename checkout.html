@@ -20,10 +20,8 @@
     </ul>
 
     <div class="nav-right">
-        <!-- FIXED LANGUAGE BUTTON -->
         <button class="lang-btn" onclick="setLang('ar')">عربي</button>
 
-        <!-- FIXED CART ICON -->
         <div class="icon cart" onclick="goToCart()">
             🛒<span id="cart-count">0</span>
         </div>
@@ -68,6 +66,12 @@
 <!-- FOOTER -->
 <footer class="footer">
     <p>© 2026 H&JPERFUMES. All rights reserved.</p>
+
+    <p>
+        <a href="https://wa.me/971502287387" target="_blank" class="whatsapp-link">
+            Contact us on WhatsApp: 0502287387
+        </a>
+    </p>
 </footer>
 
 <script src="script.js"></script>
@@ -75,6 +79,21 @@
     initLanguage();
     updateCartCount();
     displayCheckout();
+
+    function sendOrderToWhatsApp() {
+        const name = document.getElementById("customer-name").value;
+        const phone = document.getElementById("customer-phone").value;
+        const total = document.getElementById("checkout-total").innerText;
+
+        const message =
+            `Hello, I want to confirm my order.%0A%0A` +
+            `Name: ${name}%0A` +
+            `Phone: ${phone}%0A` +
+            `Total: ${total}%0A%0A` +
+            `Please confirm my order.`;
+
+        window.location.href = `https://wa.me/971502287387?text=${message}`;
+    }
 </script>
 
 </body>
